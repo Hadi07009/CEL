@@ -1,0 +1,24 @@
+F:\My Project\Development\PF Integration\PFIntegration\LibraryPF\bin\Debug\LibraryPF.dll.config
+F:\My Project\Development\PF Integration\PFIntegration\LibraryPF\bin\Debug\LibraryPF.dll
+F:\My Project\Development\PF Integration\PFIntegration\LibraryPF\bin\Debug\LibraryPF.pdb
+F:\My Project\Development\PF Integration\PFIntegration\LibraryPF\obj\Debug\LibraryPF.csprojResolveAssemblyReference.cache
+F:\My Project\Development\PF Integration\PFIntegration\LibraryPF\obj\Debug\LibraryPF.dll
+F:\My Project\Development\PF Integration\PFIntegration\LibraryPF\obj\Debug\LibraryPF.pdb
+F:\My Project\Development\weberp\LibraryPF\bin\Debug\LibraryPF.dll.config
+F:\My Project\Development\weberp\LibraryPF\bin\Debug\LibraryPF.dll
+F:\My Project\Development\weberp\LibraryPF\bin\Debug\LibraryPF.pdb
+F:\My Project\Development\weberp\LibraryPF\obj\Debug\LibraryPF.csprojResolveAssemblyReference.cache
+F:\My Project\Development\weberp\LibraryPF\obj\Debug\LibraryPF.dll
+F:\My Project\Development\weberp\LibraryPF\obj\Debug\LibraryPF.pdb
+D:\Development\WeberpCEL\LibraryPF\bin\Debug\LibraryPF.dll.config
+D:\Development\WeberpCEL\LibraryPF\bin\Debug\LibraryPF.dll
+D:\Development\WeberpCEL\LibraryPF\bin\Debug\LibraryPF.pdb
+D:\Development\WeberpCEL\LibraryPF\obj\Debug\LibraryPF.csprojResolveAssemblyReference.cache
+D:\Development\WeberpCEL\LibraryPF\obj\Debug\LibraryPF.dll
+D:\Development\WeberpCEL\LibraryPF\obj\Debug\LibraryPF.pdb
+E:\WeberpCEL\LibraryPF\bin\Debug\LibraryPF.dll.config
+E:\WeberpCEL\LibraryPF\bin\Debug\LibraryPF.dll
+E:\WeberpCEL\LibraryPF\bin\Debug\LibraryPF.pdb
+E:\WeberpCEL\LibraryPF\obj\Debug\LibraryPF.csprojResolveAssemblyReference.cache
+E:\WeberpCEL\LibraryPF\obj\Debug\LibraryPF.dll
+E:\WeberpCEL\LibraryPF\obj\Debug\LibraryPF.pdb
