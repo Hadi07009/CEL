@@ -71,6 +71,7 @@
       <Node Id="3_300_22" Text="Invest amount"  Tag="---" FormName="" Tergate="~/modules/HRMS/Payroll/frmEmployeeInvest.aspx" Tooltip="Invest amount"   ImageIndex="3" Permission="" Parameter="" PermType="" />
       <Node Id="3_300_23" Text="Salary Export"  Tag="---" FormName="" Tergate="~/modules/HRMS/Payroll/frmSalaryFormat.aspx" Tooltip="Salary Export"   ImageIndex="3" Permission="" Parameter="" PermType="" />
       <Node Id="3_300_24" Text="Tax Rebate"  Tag="---" FormName="" Tergate="~/modules/HRMS/Payroll/frmTaxRebate.aspx" Tooltip="Tax Rebate"   ImageIndex="3" Permission="" Parameter="" PermType="" />
+      <Node Id="3_300_25" Text="Tax Other Role Setup"  Tag="---" FormName="" Tergate="~/modules/HRMS/Payroll/frmTaxOtherRoleSetup.aspx" Tooltip="Tax Other Role Setup"   ImageIndex="3" Permission="" Parameter="" PermType="" />
     </Node>
 
 

@@ -23,7 +23,6 @@ E:\WeberpCEL\ControlLibrary\obj\Debug\ProudMonkey.Common.Controls.pdb
 D:\ProjectArchives\Project\WeberpCEL\ControlLibrary\bin\Debug\ProudMonkey.Common.Controls.dll
 D:\ProjectArchives\Project\WeberpCEL\ControlLibrary\bin\Debug\ProudMonkey.Common.Controls.pdb
 D:\ProjectArchives\Project\WeberpCEL\ControlLibrary\bin\Debug\AjaxControlToolkit.dll
-D:\ProjectArchives\Project\WeberpCEL\ControlLibrary\obj\Debug\CustomizeMessage.csprojResolveAssemblyReference.cache
 D:\ProjectArchives\Project\WeberpCEL\ControlLibrary\obj\Debug\ProudMonkey.Common.Controls.Properties.Resources.resources
 D:\ProjectArchives\Project\WeberpCEL\ControlLibrary\obj\Debug\CustomizeMessage.csproj.GenerateResource.Cache
 D:\ProjectArchives\Project\WeberpCEL\ControlLibrary\obj\Debug\ProudMonkey.Common.Controls.dll
