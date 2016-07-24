@@ -21,7 +21,7 @@ public class TaxOtherRolesController
         {
             if (CheckSlab(connectionString, objTaxOtherRoles) > 0)
             {
-                throw new Exception("Tax roles exist. ");
+                throw new Exception("Tax rule allready exist.");
 
             }
             string sql = null;

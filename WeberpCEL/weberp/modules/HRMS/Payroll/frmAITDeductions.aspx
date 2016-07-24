@@ -15,6 +15,17 @@
             <asp:Panel ID="PanelLeaveDet" runat="server" CssClass="cpBodyContent" Width="100%" Height="100%">
                 <table style="width: 99%; text-align: left">
                     <tr>
+                        <td style="width: 168px">
+                            <asp:Label ID="Label6" runat="server" Text="AIT in Paysetup"></asp:Label>
+                        </td>
+                        <td>:</td>
+                        <td>
+                            <asp:Button ID="btnViewAllAIT" runat="server" OnClick="btnViewAllAIT_Click" Text="View Paysetup in AIT " Width="150px" />
+                            &nbsp;
+                            <asp:Button ID="btnRemoveAllAIT" runat="server" OnClick="btnRemoveAllAIT_Click" OnClientClick="ShowConfirmBox(this,'Are you Sure, Remove all AIT?'); return false;" Text="Remove ALL AIT" Width="150px" />
+                        </td>
+                    </tr>
+                    <tr>
                         <td style="width: 168px">&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
@@ -61,8 +72,7 @@
                         <td>&nbsp;</td>
                         <td>
                             <asp:Button ID="btnUploadTaxChallan" runat="server" OnClick="btnUploadTaxChallan_Click" OnClientClick="ShowConfirmBox(this,'Are you Sure, update AIT deduction?'); return false;" Text="Update AIT Deductions" Width="150px" />
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:Button ID="btnRemoveAllAIT" runat="server" OnClick="btnRemoveAllAIT_Click" OnClientClick="ShowConfirmBox(this,'Are you Sure, Remove all AIT?'); return false;" Text="Remove ALL AIT" Width="150px" />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </td>
                     </tr>
                     <tr>
@@ -155,6 +165,17 @@
                                     <ItemStyle HorizontalAlign="Right" />
                                     </asp:CommandField>
                                 </Columns>
+                            </asp:GridView>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 168px">&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <asp:GridView ID="GridViewAIT" runat="server" OnRowDataBound="GridViewAIT_RowDataBound" ShowFooter="true" >
                             </asp:GridView>
                         </td>
                     </tr>

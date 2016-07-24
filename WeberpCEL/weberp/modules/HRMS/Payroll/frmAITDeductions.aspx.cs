@@ -79,6 +79,8 @@ public partial class modules_HRMS_Payroll_frmAITDeductions : System.Web.UI.Page
         try
         {
             GetTaxChallanData();
+            grdTaxChallan.Visible = true;  
+            GridViewAIT.Visible = false;  
         }
         catch (Exception msgException)
         {
@@ -224,5 +226,41 @@ public partial class modules_HRMS_Payroll_frmAITDeductions : System.Web.UI.Page
         {
             MessageBox1.ShowError(msgException.Message); 
         }
+    }
+    protected void btnViewAllAIT_Click(object sender, EventArgs e)
+    {
+        DateTime date1;
+        date1 = DateProcess.FirstDateOfMonth(System.DateTime.Now).AddMonths(-1);
+
+        DataTable dt = new DataTable();
+        string sql = "";
+        sql = @"select EmpID,EmpName,Office as [Office Location],Dept as Department,Sect as Section,Designation,cast(For_Det_Value as decimal(18,2)) as TAX  from hrms_emp_for_det a 
+                inner join Emp_Details b on a.For_Det_Empid=b.EmpID                
+                where For_Det_ForCode='INCAMT' and EmpID not in(select Emp_id from hrms_emp_Settlement where Rel_Date<CONVERT(Datetime,'" + date1 + "',103)) order by For_Det_Empid ";
+
+        dt = DataProcess.GetData(_connectionString, sql);
+        GridViewAIT.DataSource = dt;
+        GridViewAIT.DataBind();
+
+        grdTaxChallan.Visible = false;
+        GridViewAIT.Visible = true;  
+    }
+    protected void GridViewAIT_RowDataBound(object sender, GridViewRowEventArgs e)
+    {             
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            var rowTotal = Convert.ToDouble(e.Row.Cells[6].Text);
+            _totalValue = _totalValue + rowTotal;
+        }
+
+        if (e.Row.RowType == DataControlRowType.Footer)
+        {
+            e.Row.Cells[6].HorizontalAlign = HorizontalAlign.Right;
+            e.Row.Cells[5].Text = @"Total :";
+            e.Row.Cells[6].Text = _totalValue.ToString("F");
+        }
+
+        e.Row.Cells[6].HorizontalAlign = HorizontalAlign.Right;
+
     }
 }

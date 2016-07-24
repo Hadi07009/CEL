@@ -114,6 +114,18 @@ public partial class modules_HRMS_Details_frmSalaryCertificateReport : System.We
 
     }
 
+    private string fiscal_year2(DateTime dt)
+    {
+        string fsy;
+        int mm = dt.Month;
+        if (mm <= 6)
+            fsy = Convert.ToString(dt.Year - 1) + "-" + Convert.ToString(dt.Year);
+        else
+            fsy = Convert.ToString(dt.Year) + "-" + Convert.ToString(dt.Year+1);
+        
+        return fsy;
+    }
+
     protected void btnTaxReportShow_Click(object sender, EventArgs e)
     {
         tbl_Salary_Certificate_Ref_ReportTableAdapter cer = new tbl_Salary_Certificate_Ref_ReportTableAdapter();
@@ -136,7 +148,19 @@ public partial class modules_HRMS_Details_frmSalaryCertificateReport : System.We
         string Startdate = "@start_date" + ":" + dateFrom;
         string Enddate = "@end_date" + ":" + dateTo;
         string regardsby = "regardsby" + ":" +txtregards.Text;
+        string finyear = fiscal_year2(Convert.ToDateTime(dateTo));
 
+        DateTime date1, date2;
+        date1 = Convert.ToDateTime(GetsalDate(txtemployeeSearch.Text.Split(':')[0], Convert.ToDateTime(dateFrom), Convert.ToDateTime(dateTo)).Split('@')[0].ToString());
+        date2 = Convert.ToDateTime(GetsalDate(txtemployeeSearch.Text.Split(':')[0], Convert.ToDateTime(dateFrom), Convert.ToDateTime(dateTo)).Split('@')[1].ToString());
+
+        date1 = DateProcess.FirstDateOfMonth(date1);
+        date2 = DateProcess.LastDateOfMonth(date2);
+        finyear = finyear + "(" + date1.ToShortDateString() + "-" + date2.ToShortDateString() + ")";
+        finyear = "finyear" + ":" + finyear.ToString();
+
+
+        
         string fiscalyear = fiscal_year(Convert.ToDateTime(dateTo));
         int refno = Convert.ToInt32(cer.MaxRef(fiscalyear));
      
@@ -201,8 +225,8 @@ public partial class modules_HRMS_Details_frmSalaryCertificateReport : System.We
 
         }
 
-        parameter = CompanyName + ";" + CompanyAddress + ";" + Startdate + ";" + Enddate + ";" + regardsby;
-        reportname = "../Reports/SalaryCertificateReport.rpt";
+        parameter = CompanyName + ";" + CompanyAddress + ";" + Startdate + ";" + Enddate + ";" + regardsby + ";" + finyear;
+        reportname = "../Reports/SalaryCertificateReport2.rpt";
 
         if (txtemployeeSearch.Text != "")
         {
@@ -211,6 +235,19 @@ public partial class modules_HRMS_Details_frmSalaryCertificateReport : System.We
 
        
         ShowReport(selectionfor, parameter, reportname);
+    }
+
+    private string GetsalDate(string empcode,DateTime stdate, DateTime enddate)
+    {
+        string dt1, dt2;
+        string sql = @"select MIN(Salmonth) as mindate,MAX(Salmonth) as maxdate from hrms_salary where Empcode='" + empcode + "' and Salmonth between CONVERT(Datetime,'" + stdate + "',103) and CONVERT(Datetime,'" + enddate + "',103)";
+        DataTable dt = new DataTable();
+        dt = DataProcess.GetData(ConnectionString, sql);
+        dt1 = dt.Rows[0]["mindate"].ToString();
+        dt2 = dt.Rows[0]["maxdate"].ToString();
+
+        return dt1 + "@" + dt2;
+ 
     }
         
     protected void ddlcompany_SelectedIndexChanged(object sender, EventArgs e)
