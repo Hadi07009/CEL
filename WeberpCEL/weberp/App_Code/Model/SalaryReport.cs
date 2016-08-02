@@ -42,4 +42,11 @@ public class SalaryReport
         get { return _employeeCode; }
         set { _employeeCode = value; }
     }
+    private string _employeeStatus;
+
+    public string EmployeeStatus
+    {
+        get { return _employeeStatus; }
+        set { _employeeStatus = value; }
+    }
 }

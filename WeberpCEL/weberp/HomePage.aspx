@@ -34,7 +34,7 @@
                                 <tr>
                                     <td colspan="3" style="text-align: left;">
                                         <%--<div style="margin-left:0px; height:350px">--%>
-                                            <asp:Image ID="Image1" runat="server" BorderStyle="Solid" BorderWidth="0px" Height="340px" Width="100%" />
+                                            <asp:Image ID="Image1" runat="server" BorderStyle="Solid" Height="340px" BorderWidth="0px" Width="100%" />
                                         <%--</div>--%>
                                         <cc1:SlideShowExtender ID="SlideShowExtender1" runat="server" AutoPlay="true" Loop="true"  SlideShowServiceMethod="GetSlides" TargetControlID="Image1">
                                         </cc1:SlideShowExtender>
@@ -824,6 +824,7 @@ td {
         <script runat="Server" type="text/C#">
         [System.Web.Services.WebMethod]
         [System.Web.Script.Services.ScriptMethod]
+       
         public static Slide[] GetSlides()
         {
             var slides = new Slide[8];

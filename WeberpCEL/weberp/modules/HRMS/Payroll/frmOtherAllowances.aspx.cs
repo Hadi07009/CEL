@@ -58,11 +58,11 @@ public partial class modules_HRMS_Payroll_frmOtherAllowances : System.Web.UI.Pag
 
         string sql = "delete from HrmsOthersPaymentwithsalary where month(oSalmonth)=month(Convert(Datetime,'" + saldate + "',103)) and year(oSalmonth)=year(Convert(Datetime,'" + saldate + "',103)) and [Type] in('OT','FA','CA','TA','HA','OA')";
         DataProcess.ExecuteQuery(_connectionString, sql);
-      
 
+        
         foreach (DataRow dtRow in dtFromExcel.Rows)
         {
-            if (Convert.ToDouble(dtRow["OT Allowance"].ToString() == "" ? "0" : dtRow["OT Allowance"].ToString()) > 0)
+            if (Convert.ToDouble(dtRow["OT Allowance".Trim()].ToString() == "" ? "0" : dtRow["OT Allowance".Trim()].ToString()) > 0) 
             {
                 _objOvertimeController = new OtherAllowancesController();
                 _objOvertime = new OtherAllowances();
@@ -70,7 +70,7 @@ public partial class modules_HRMS_Payroll_frmOtherAllowances : System.Web.UI.Pag
                 _objOvertime.ChallanDate = saldate;
                 _objOvertime.ChallanForMonth = saldate;
                 _objOvertime.ChallanNumber = dtRow["Extra Hour"].ToString();
-                _objOvertime.ChallamAmount = dtRow["OT Allowance"].ToString() == "" ? 0 : Convert.ToDecimal(dtRow["OT Allowance"].ToString());
+                _objOvertime.ChallamAmount = dtRow["OT Allowance".Trim()].ToString() == "" ? 0 : Convert.ToDecimal(dtRow["OT Allowance".Trim()].ToString());
                 _objOvertime.Paytype = "OT";
                 _objOvertimeController.Save(_connectionString, _objOvertime);
             }

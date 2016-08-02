@@ -93,7 +93,7 @@ public class TaxRebateController
             {
                 sql = sql + " AND a.slabType = '" + objTaxRebate.SlabType + "'";
             }
-            sql = sql + " ORDER BY a.slab,a.slabType";
+            sql = sql + " ORDER BY a.slabType,a.slab";
             dtTaxRebate = DataProcess.GetData(connectionString, sql);
             return dtTaxRebate;
 

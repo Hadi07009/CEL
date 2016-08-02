@@ -135,6 +135,7 @@ public partial class modules_HRMS_Payroll_frmSalaryReport : System.Web.UI.Page
             _objSalaryReport.Department = ddlDepartmentId.SelectedValue == "ALL" ? null : ddlDepartmentId.SelectedValue;
             _objSalaryReport.EmployeeCategory = ddlEmpCategory.SelectedValue == "-1" ? null : ddlEmpCategory.SelectedValue;
             _objSalaryReport.EmployeeCode = txtEmployeeCode.Text == string.Empty ? null : txtEmployeeCode.Text;
+            _objSalaryReport.EmployeeStatus = rblEmployeeStatus.SelectedValue;
 
             _objSalaryReportController = new SalaryReportController();
             DataTable dtSalaryRecordDetails = _objSalaryReportController.GetSalaryRecord(_connectionString, _objSalaryReport);

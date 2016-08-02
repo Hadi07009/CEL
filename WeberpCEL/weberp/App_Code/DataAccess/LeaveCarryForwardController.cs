@@ -30,6 +30,14 @@ public class LeaveCarryForwardController
                                         objCarryForward.EntryUser + "'";
         StoredProcedureExecutor.StoredProcedureExecuteNonQuery(connectionString, storedProcedureComandTest);
     }
+
+    public void SaveCarryForwardAll(string connectionString, LeaveCarryForward objCarryForward)
+    {
+        var storedProcedureComandTest = "exec [spInitiate_HRMS_Leave_CarryForwardALL] '" + objCarryForward.SelectedDate + "','" + objCarryForward.EntryUser + "'";
+        
+        StoredProcedureExecutor.StoredProcedureExecuteNonQuery(connectionString, storedProcedureComandTest);
+    }
+
     public DataTable GetData(string connectionString, LeaveCarryForward objCarryForward)
     {
         DataTable dtLeaveRecord = null;

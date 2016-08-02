@@ -16,10 +16,12 @@ public class AnnualStatementController
         // TODO: Add constructor logic here
         //
     }
-    private void Save(string connectionString, AnnualStatement objAnnualStatement)
+    public void Save(string connectionString, AnnualStatement objAnnualStatement)
     {
         try
         {
+            Delete(connectionString, objAnnualStatement);
+
             string fromDate = "CONVERT(DATETIME,'" + objAnnualStatement.FromDate + "',103)";
             string toDate = "CONVERT(DATETIME,'" + objAnnualStatement.ToDate + "',103)";
             string sql = null;
@@ -63,6 +65,15 @@ public class AnnualStatementController
 
             sql = sql + " GROUP BY A.EmpID,B.Emp_Mas_TIN	ORDER BY A.EmpID";
             DataProcess.InsertQuery(connectionString, sql);
+            
+            DataTable dtupdate = new DataTable();
+
+            dtupdate = DataProcess.GetData(connectionString, "select employeeCode from tblAnnualStatementReport where userID='" + objAnnualStatement.UserID + "'");
+            foreach (DataRow dr in dtupdate.Rows)
+            {
+                var storedProcedureComandTest = "exec [spTaxcalculationByempidforannualstatement] '" + dr["employeeCode"].ToString() + "','" + objAnnualStatement.ToDate.ToString() + "'";
+                StoredProcedureExecutor.StoredProcedureExecuteNonQuery(connectionString, storedProcedureComandTest); 
+            }
 
         }
         catch (Exception msgException)
@@ -70,9 +81,8 @@ public class AnnualStatementController
 
             throw msgException;
         }
-    }
-
-    private void Delete(string connectionString, AnnualStatement objAnnualStatement)
+    }  
+    public void Delete(string connectionString, AnnualStatement objAnnualStatement)
     {
         try
         {
@@ -94,8 +104,7 @@ public class AnnualStatementController
         myConnection.Open();
         SqlTransaction transaction = myConnection.BeginTransaction();
         try
-        {
-            Delete(connectionString, objAnnualStatement);
+        {           
             Save(connectionString,objAnnualStatement);
             string sql = null;
             DataTable dtAnnualStatementRecord = new DataTable();

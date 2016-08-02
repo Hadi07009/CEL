@@ -120,7 +120,20 @@ public partial class modules_HRMS_Details_frmTaxCalculaionReport : System.Web.UI
             return;
         }
 
+        CallYearlyStatement();
+
         ShowReport(selectionfor, parameter, reportname);
+    }
+
+    private void CallYearlyStatement()
+    {
+        AnnualStatement _objAnnualStatement=new AnnualStatement();
+        AnnualStatementController _objAnnualStatementController = new AnnualStatementController(); 
+        _objAnnualStatement.FromDate = Convert.ToDateTime(txtFromDate.SelectedDate);
+        _objAnnualStatement.ToDate = Convert.ToDateTime(txtToDate.SelectedDate);
+        _objAnnualStatement.EmployeeCode = txtemployeeSearch.Text == string.Empty ? null : txtemployeeSearch.Text.Split(':')[0].ToString();
+        _objAnnualStatement.UserID = current.UserId;
+        _objAnnualStatementController.Save(ConnectionString, _objAnnualStatement);
     }
         
     protected void ddlcompany_SelectedIndexChanged(object sender, EventArgs e)

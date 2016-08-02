@@ -5,6 +5,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <cc1:MessageBox ID="MessageBox1" runat="server" />
+    
     <asp:UpdatePanel ID="updpnl2" runat="server">
         <ContentTemplate>
             <asp:Panel ID="PanelLeaveHdr" runat="server" CssClass="cpHeaderContent" Width="100%">
@@ -64,6 +65,8 @@
                         <td>
                             <asp:Button ID="btnSave" runat="server" OnClick="btnSave_Click" Text="Save" Width="100px" />
                             <asp:Button ID="btnClear" runat="server" OnClick="btnClear_Click" Text="Clear" Width="100px" />
+                            &nbsp;
+                            <asp:Button ID="btnSaveAll" runat="server" OnClick="btnSaveAll_Click" Text="Carryforward ALL" Width="120px" />
                         </td>
                     </tr>
                     <tr>
@@ -133,6 +136,7 @@
         </ContentTemplate>
         <Triggers>
             <asp:PostBackTrigger ControlID="btnSave" />
+            <asp:PostBackTrigger ControlID="btnSaveALL" />
         </Triggers>
     </asp:UpdatePanel>
     <script type="text/javascript">

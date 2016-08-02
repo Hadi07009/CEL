@@ -58,12 +58,16 @@ public partial class modules_HRMS_Details_frmLeaveCarryForward : System.Web.UI.P
         _objLeaveCarryForward.EntryUser = current.UserId;
         _objLeaveCarryForwardController = new LeaveCarryForwardController();
         _objLeaveCarryForwardController.Save(_connectionString, _objLeaveCarryForward);
+        GetCarryLeaveRecord(_objLeaveCarryForward.EmployeeCode);    
+    }
 
-        GetCarryLeaveRecord(_objLeaveCarryForward.EmployeeCode);
-
-       
-
-
+    private void SaveCarryForwardALLData()
+    {
+        _objLeaveCarryForward = new LeaveCarryForward();        
+        _objLeaveCarryForward.SelectedDate = popupDate.Text == string.Empty ? null : Convert.ToDateTime(popupDate.Text).ToString("dd-MMM-yyyy");        
+        _objLeaveCarryForward.EntryUser = current.UserId;
+        _objLeaveCarryForwardController = new LeaveCarryForwardController();
+        _objLeaveCarryForwardController.SaveCarryForwardAll(_connectionString, _objLeaveCarryForward);        
     }
 
     private void clearfield()
@@ -150,5 +154,19 @@ public partial class modules_HRMS_Details_frmLeaveCarryForward : System.Web.UI.P
         txtNoOfDays.Text = string.Empty;
         grdLeaveReport.DataSource = null;
         grdLeaveReport.DataBind();
+    }
+    protected void btnSaveAll_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            SaveCarryForwardALLData();
+            clearfield();
+            MessageBox1.ShowSuccess("Data saved Successful");
+        }
+        catch (Exception msgException)
+        {
+
+            MessageBox1.ShowError(msgException.Message);
+        }
     }
 }

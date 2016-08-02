@@ -38,6 +38,7 @@ public class SalaryReportController
                     +SUM( (CASE WHEN FOR_DET_FORCODE = 'PFEC' THEN For_Det_Value ELSE 0 END)) AS GrossSalary
                     FROM hrms_emp_for_det A
                     INNER JOIN Emp_Details B ON A.For_Det_Empid = B.EmpID
+                    INNER JOIN HrMs_Emp_mas C ON A.For_Det_Empid = C.Emp_Mas_Emp_Id
                     WHERE formulaStatus = 1 ";
             if (objSalaryReport.OfficeLocation != null)
             {
@@ -60,6 +61,12 @@ public class SalaryReportController
             {
                 sql = sql + " AND B.EmpID = '" + objSalaryReport.EmployeeCode + "'";
 
+            }
+
+            if (objSalaryReport.EmployeeStatus == "Y" || objSalaryReport.EmployeeStatus == "N")
+            {
+                sql = sql + " AND C.Emp_Mas_Term_Flg = '" + objSalaryReport.EmployeeStatus + "'";
+                
             }
 
             sql = sql + " GROUP BY For_Det_Empid,B.EmpName,B.Designation,B.Dept ORDER BY For_Det_Empid";

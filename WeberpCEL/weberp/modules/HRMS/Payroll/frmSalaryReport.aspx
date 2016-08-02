@@ -77,6 +77,17 @@
                         <td style="width: 108px">&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>
+                            <asp:RadioButtonList ID="rblEmployeeStatus" runat="server" RepeatDirection="Horizontal" Width="350px">
+                                <asp:ListItem Selected="True" Value="N">Active</asp:ListItem>
+                                <asp:ListItem Value="Y">Inactive</asp:ListItem>
+                                <asp:ListItem Value="B">Both</asp:ListItem>
+                            </asp:RadioButtonList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 108px">&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>
                             <asp:Button ID="btnShow" runat="server" OnClick="btnShow_Click" Text="Show" Width="100px" />
                         </td>
                     </tr>
